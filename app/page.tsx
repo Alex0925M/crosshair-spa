@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Wrench, Settings, Star, MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react"
 import { useState, useRef } from "react"
 import emailjs from '@emailjs/browser'
+import Image from 'next/image'
 
 export default function HomePage() {
   const form = useRef<HTMLFormElement>(null)
@@ -45,9 +46,11 @@ export default function HomePage() {
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center">
-            <img
+            <Image
               src="/logo.png"
               alt="Crosshair Solutions"
+              width={120}
+              height={40}
               className="h-30 w-auto"
             />
           </div>
@@ -84,7 +87,13 @@ export default function HomePage() {
       <section id="home" className="relative min-h-screen flex items-center justify-center">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <img src="/hero-bg.png" alt="Construction site background" className="w-full h-full object-cover" />
+          <Image 
+            src="/hero-bg.png" 
+            alt="Construction site background" 
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
@@ -158,9 +167,11 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <img
+              <Image
                 src="/workers.jpg"
                 alt="Our professional team"
+                width={600}
+                height={320}
                 className="w-full h-80 object-cover rounded-lg shadow-lg"
               />
             </div>
@@ -173,7 +184,7 @@ export default function HomePage() {
                 materials and proven techniques.
               </p>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                From initial consultation to project completion, we're committed to delivering exceptional results that
+                From initial consultation to project completion, we&apos;re committed to delivering exceptional results that
                 exceed your expectations. Every job comes with our comprehensive warranty and satisfaction guarantee.
               </p>
               <Button
@@ -197,9 +208,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="mb-6">
-                <img
+                <Image
                   src="/man-smiling.jpg"
                   alt="John M."
+                  width={112}
+                  height={112}
                   className="w-28 h-28 rounded-full mx-auto object-cover object-center"
                 />
               </div>
@@ -209,8 +222,8 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                "Outstanding service from start to finish. The team was professional, punctual, and the results exceeded
-                our expectations. Our home looks fantastic!"
+                &quot;Outstanding service from start to finish. The team was professional, punctual, and the results exceeded
+                our expectations. Our home looks fantastic!&quot;
               </p>
               <p className="font-semibold text-gray-900">John M.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
@@ -218,9 +231,11 @@ export default function HomePage() {
 
             <div className="text-center">
               <div className="mb-6">
-                <img
+                <Image
                   src="/woman-smiling.jpg"
                   alt="Sarah K."
+                  width={112}
+                  height={112}
                   className="w-28 h-28 rounded-full mx-auto object-cover object-top"
                 />
               </div>
@@ -230,8 +245,8 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                "The woodpecker problem that plagued our home for years is completely solved. The coating looks great
-                and has held up perfectly through all weather conditions."
+                &quot;The woodpecker problem that plagued our home for years is completely solved. The coating looks great
+                and has held up perfectly through all weather conditions.&quot;
               </p>
               <p className="font-semibold text-gray-900">Sarah K.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
@@ -352,9 +367,11 @@ export default function HomePage() {
             {/* Company Info */}
             <div>
               <div className="mb-8">
-                <img
+                <Image
                   src="/logo.png"
                   alt="Crosshair Solutions"
+                  width={120}
+                  height={64}
                   className="h-16 w-auto mb-6"
                 />
               </div>
