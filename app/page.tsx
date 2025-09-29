@@ -147,10 +147,9 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 text-balance">
-            Protect your home. Guaranteed.
+            Protect your home from harmful pathogens. Guaranteed.
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 text-pretty">
-            Home Coating and Woodpecker Protection you can trust.
           </p>
           <Button
             size="lg"
@@ -169,15 +168,25 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card className="text-center p-6 border-2 border-orange-200 hover:border-orange-300 transition-colors">
+            <Card className="text-center p-6 border-2 border-orange-200 hover:border-orange-300 transition-colors relative">
+              {/* Selo no canto superior direito */}
+              <div className="absolute -top-4 -right-4 z-10">
+                <Image
+                  src="/selo.png"
+                  alt="Quality Seal"
+                  width={150}
+                  height={150}
+                  className="w-24 h-24 object-contain"
+                  priority
+                />
+              </div>
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-orange-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Home Coating</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Professional exterior coating services that protect your home from weather damage and enhance its
-                  appearance.
+                  Protect your home from weather with advanced coating. Long-term protection. Ideal for stucco, walls, woods, doors, and more.
                 </p>
               </CardContent>
             </Card>
@@ -189,7 +198,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Stucco & Repair </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Durable, professional stucco repair for a lasting finish. 
+                  New construction and professional stucco repair for a lasting finish.
                 </p>
               </CardContent>
             </Card>
@@ -201,7 +210,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Exterior Maintenance</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Complete maintenance to keep your home looking new. Restore your home's exterior with high quality power washing
+                  Complete maintenance to keep your home looking new. Restore your home's exterior with high quality power washing, concrete, slabs and docks.
                 </p>
               </CardContent>
             </Card>
@@ -226,13 +235,7 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Us</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                We are a trusted home exterior company with over 25 years of experience protecting homes from weather
-                damage and woodpecker issues. Our team of certified professionals uses only the highest quality
-                materials and proven techniques.
-              </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                From initial consultation to project completion, we&apos;re committed to delivering exceptional results that
-                exceed your expectations. Every job comes with our comprehensive warranty and satisfaction guarantee.
+               For nearly three decades, Crosshair Stucco and Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 29 years ago, we specialize in stucco and repair - and now produly offer protective home coatings to give your home an extra layer of safety and durability. Our mission is simple: to keep your home safe, beautiful, and protected from damage.
               </p>
               <Button
                 size="lg"
@@ -269,8 +272,7 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                &quot;Outstanding service from start to finish. The team was professional, punctual, and the results exceeded
-                our expectations. Our home looks fantastic!&quot;
+                &quot;Crosshair Solutions exceeded my expectations! The repairs were completed seamlessly, and my property looks better than ever&quot;
               </p>
               <p className="font-semibold text-gray-900">John M.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
@@ -292,8 +294,7 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                &quot;The woodpecker problem that plagued our home for years is completely solved. The coating looks great
-                and has held up perfectly through all weather conditions.&quot;
+                &quot;I hired Crosshair for a driveway clean and seal, and I couldn't be happier with the outcome. Will definetely be using their services again!&quot;
               </p>
               <p className="font-semibold text-gray-900">Sarah K.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
@@ -374,7 +375,7 @@ export default function HomePage() {
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Phone:</p>
-                  <p className="text-gray-900 font-medium">(573) 692-1943</p>
+                  <p className="text-gray-900 font-medium">(573) 692-1343</p>
                 </div>
                 
                 <div>
@@ -384,7 +385,7 @@ export default function HomePage() {
                 
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Address:</p>
-                  <p className="text-gray-900 font-medium">Sacramento, CA</p>
+                  <p className="text-gray-900 font-medium">288, Destiny ridge, Roach Missouri, 65787</p>
                   <p className="text-gray-900 font-medium">United States</p>
                 </div>
               </div>
@@ -392,8 +393,7 @@ export default function HomePage() {
               {/* Interactive Map */}
               <div className="w-full h-64 rounded-lg shadow-lg overflow-hidden border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1639445729076!5m2!1sen!2s"
-                  width="100%"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12555.91325535918!2d-92.9046333346985!3d38.117438921790715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c4ef81a0e8d6d7%3A0x2bcf78e0ca1fe2e7!2s288%20Destiny%20Ln%2C%20Roach%2C%20MO%2065787%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1758571666371!5m2!1spt-BR!2sbr"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
@@ -428,7 +428,7 @@ export default function HomePage() {
                   <MapPin className="text-orange-400 w-5 h-5 mt-1 mr-2" />
                   <div>
                     <p className="font-semibold text-white mb-2">Address</p>
-                    <p className="text-gray-300">Sacramento, CA</p>
+                    <p className="text-gray-300">Roach, MO</p>
                     <p className="text-gray-300">United States</p>
                   </div>
                 </div>
