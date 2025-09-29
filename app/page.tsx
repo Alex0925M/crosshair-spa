@@ -50,8 +50,8 @@ export default function HomePage() {
             <Image
               src="/logo.png"
               alt="Crosshair Solutions"
-              width={120}
-              height={40}
+              width={400}
+              height={200}
               className="h-30 w-auto"
             />
           </div>
@@ -154,6 +154,7 @@ export default function HomePage() {
           <Button
             size="lg"
             className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get a Free Estimate
           </Button>
@@ -174,10 +175,14 @@ export default function HomePage() {
                 <Image
                   src="/selo.png"
                   alt="Quality Seal"
-                  width={150}
-                  height={150}
-                  className="w-24 h-24 object-contain"
+                  width={200}
+                  height={200}
+                  className="w-28 h-28 object-contain drop-shadow-lg"
+                  quality={100}
                   priority
+                  style={{ 
+                    imageRendering: 'crisp-edges'
+                  }}
                 />
               </div>
               <CardContent className="pt-6">
@@ -240,6 +245,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Request a Free Quote
               </Button>
@@ -391,9 +397,10 @@ export default function HomePage() {
               </div>
 
               {/* Interactive Map */}
-              <div className="w-full h-64 rounded-lg shadow-lg overflow-hidden border">
+              <div className="w-full h-80 rounded-lg shadow-lg overflow-hidden border">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12555.91325535918!2d-92.9046333346985!3d38.117438921790715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c4ef81a0e8d6d7%3A0x2bcf78e0ca1fe2e7!2s288%20Destiny%20Ln%2C%20Roach%2C%20MO%2065787%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1758571666371!5m2!1spt-BR!2sbr"
+                  width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
