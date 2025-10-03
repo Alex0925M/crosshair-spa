@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Wrench, Settings, Star, MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react"
 import { useState, useRef } from "react"
 import emailjs from '@emailjs/browser'
-import Image from 'next/image'
 
 export default function HomePage() {
   const form = useRef<HTMLFormElement>(null)
@@ -47,12 +46,10 @@ export default function HomePage() {
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center">
-            <Image
+            <img
               src="/logo.png"
               alt="Crosshair Solutions"
-              width={400}
-              height={200}
-              className="h-30 w-auto"
+              className="h-10 md:h-12 w-auto"
             />
           </div>
           
@@ -134,20 +131,18 @@ export default function HomePage() {
       <section id="home" className="relative min-h-screen flex items-center justify-center">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <Image 
+          <img 
             src="/hero-bg.png" 
             alt="Construction site background" 
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/15"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 text-balance">
-            Protect your home from harmful pathogens. Guaranteed.
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight md:whitespace-nowrap">
+           Protect your home from harmful<br />pathogens. Guaranteed.
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 text-pretty">
           </p>
@@ -158,6 +153,17 @@ export default function HomePage() {
           >
             Get a Free Estimate
           </Button>
+        </div>
+      </section>
+
+      {/* Orange Banner Section */}
+      <section className="bg-orange-500 py-4">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <p className="text-white font-semibold text-sm md:text-base uppercase tracking-wider">
+              NO VOC • 100% GREEN • GERM AND VIRUS KILLER ON CONTACT • INTERIOR & EXTERIOR
+            </p>
+          </div>
         </div>
       </section>
 
@@ -172,14 +178,10 @@ export default function HomePage() {
             <Card className="text-center p-6 border-2 border-orange-200 hover:border-orange-300 transition-colors relative">
               {/* Selo no canto superior direito */}
               <div className="absolute -top-4 -right-4 z-10">
-                <Image
+                <img
                   src="/selo.png"
                   alt="Quality Seal"
-                  width={200}
-                  height={200}
                   className="w-28 h-28 object-contain drop-shadow-lg"
-                  quality={100}
-                  priority
                   style={{ 
                     imageRendering: 'crisp-edges'
                   }}
@@ -191,7 +193,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Home Coating</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Protect your home from weather with advanced coating. Long-term protection. Ideal for stucco, walls, woods, doors, and more.
+                  Protect your home from weather with advanced coating. Long-term protection. Ideal for stucco, walls, wood, doors, and more.
                 </p>
               </CardContent>
             </Card>
@@ -215,7 +217,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Exterior Maintenance</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Complete maintenance to keep your home looking new. Restore your home's exterior with high quality power washing, concrete, slabs and docks.
+                  Complete maintenance to keep your home looking like new. Restore your home's exterior with high-quality power washing, concrete, slabs and docks.
                 </p>
               </CardContent>
             </Card>
@@ -228,11 +230,9 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
-              <Image
-                src="/workers.jpg"
+              <img
+                src="/owner.jpg"
                 alt="Our professional team"
-                width={600}
-                height={320}
                 className="w-full h-80 object-cover rounded-lg shadow-lg"
               />
             </div>
@@ -240,7 +240,7 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Us</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-               For nearly three decades, Crosshair Stucco and Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 29 years ago, we specialize in stucco and repair - and now produly offer protective home coatings to give your home an extra layer of safety and durability. Our mission is simple: to keep your home safe, beautiful, and protected from damage.
+               For nearly three decades, Crosshair Stucco & Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 29 years ago, we specialize in stucco work and repair - and now proudly offer protective home coatings to provide your home with an extra layer of safety and durability. Our mission is simple: to keep your home safe, beautiful, and protected from damage.
               </p>
               <Button
                 size="lg"
@@ -264,11 +264,9 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="mb-6">
-                <Image
+                <img
                   src="/man-smiling.jpg"
                   alt="John M."
-                  width={112}
-                  height={112}
                   className="w-28 h-28 rounded-full mx-auto object-cover object-center"
                 />
               </div>
@@ -286,11 +284,9 @@ export default function HomePage() {
 
             <div className="text-center">
               <div className="mb-6">
-                <Image
+                <img
                   src="/woman-smiling.jpg"
                   alt="Sarah K."
-                  width={112}
-                  height={112}
                   className="w-28 h-28 rounded-full mx-auto object-cover object-top"
                 />
               </div>
@@ -300,7 +296,7 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                &quot;I hired Crosshair for a driveway clean and seal, and I couldn't be happier with the outcome. Will definetely be using their services again!&quot;
+                &quot;I hired Crosshair for a driveway clean and seal, and I couldn't be happier with the outcome. Will definitely be using their services again!&quot;
               </p>
               <p className="font-semibold text-gray-900">Sarah K.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
@@ -313,7 +309,7 @@ export default function HomePage() {
       <section id="contact" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -391,7 +387,7 @@ export default function HomePage() {
                 
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Address:</p>
-                  <p className="text-gray-900 font-medium">288, Destiny ridge, Roach Missouri, 65787</p>
+                  <p className="text-gray-900 font-medium">288 Destiny Ridge, Roach Missouri, 65787</p>
                   <p className="text-gray-900 font-medium">United States</p>
                 </div>
               </div>
@@ -399,7 +395,7 @@ export default function HomePage() {
               {/* Interactive Map */}
               <div className="w-full h-80 rounded-lg shadow-lg overflow-hidden border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12555.91325535918!2d-92.9046333346985!3d38.117438921790715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c4ef81a0e8d6d7%3A0x2bcf78e0ca1fe2e7!2s288%20Destiny%20Ln%2C%20Roach%2C%20MO%2065787%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1758571666371!5m2!1spt-BR!2sbr"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12555.91325535918!2d-92.9046333346985!3d38.117438921790715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c4ef81a0e8d6d7%3A0x2bcf78e0ca1fe2e7!2s288%20Destiny%20Ln%2C%20Roach%2C%20MO%2065787%2C%20USA!5e0!3m2!1sen!2sus!4v1758571666371!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -421,12 +417,10 @@ export default function HomePage() {
             {/* Company Info */}
             <div>
               <div className="mb-8">
-                <Image
+                <img
                   src="/logo.png"
                   alt="Crosshair Solutions"
-                  width={120}
-                  height={64}
-                  className="h-16 w-auto mb-6"
+                  className="h-12 md:h-16 w-auto mb-6"
                 />
               </div>
               
