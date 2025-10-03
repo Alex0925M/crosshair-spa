@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Shield, Wrench, Settings, Star, MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react"
+import { Shield, Wrench, Settings, Star, MapPin, Phone, Mail, Facebook, Instagram, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useRef } from "react"
 import emailjs from '@emailjs/browser'
 
@@ -11,6 +11,31 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // Array de imagens para o carrossel
+  const workImages = [
+    { src: '/work1.png', alt: 'Project 1' },
+    { src: '/work2.png', alt: 'Project 2' },
+    { src: '/work3.png', alt: 'Project 3' },
+    { src: '/work4.png', alt: 'Project 4' },
+    { src: '/work5.png', alt: 'Project 5' },
+    { src: '/work6.png', alt: 'Project 6' },
+    { src: '/work7.png', alt: 'Project 7' },
+    { src: '/work8.png', alt: 'Project 8' },
+    { src: '/work9.png', alt: 'Project 9' },
+    { src: '/work10.png', alt: 'Project 10' },
+    { src: '/work11.png', alt: 'Project 11' },
+    { src: '/work12.png', alt: 'Project 12' },
+  ]
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % workImages.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + workImages.length) % workImages.length)
+  }
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,6 +89,9 @@ export default function HomePage() {
             <a href="#about" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
               About
             </a>
+             <a href="#work" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
+              Our Work
+            </a>
             <a href="#reviews" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
               Reviews
             </a>
@@ -100,6 +128,13 @@ export default function HomePage() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Services
+              </a>
+              <a 
+                href="#work" 
+                className="block text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Our Work
               </a>
               <a 
                 href="#about" 
@@ -140,11 +175,15 @@ export default function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight md:whitespace-nowrap">
-           Protect your home from harmful<br />pathogens. Guaranteed.
+        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 leading-tight">
+            Protect your home from <span className="text-orange-500">woodpeckers</span>.
+          </h1>
+          <h1 className="text-3xl md:text-6xl font-bold text-white mb-4">
+            Guaranteed.
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 text-pretty">
+            Home Coating you can trust.
           </p>
           <Button
             size="lg"
@@ -178,14 +217,16 @@ export default function HomePage() {
             <Card className="text-center p-6 border-2 border-orange-200 hover:border-orange-300 transition-colors relative">
               {/* Selo no canto superior direito */}
               <div className="absolute -top-4 -right-4 z-10">
-                <img
-                  src="/selo.png"
-                  alt="Quality Seal"
-                  className="w-28 h-28 object-contain drop-shadow-lg"
-                  style={{ 
-                    imageRendering: 'crisp-edges'
-                  }}
-                />
+                <a href="https://www.biobond.com" target="_blank" rel="noopener noreferrer" className="block hover:scale-110 transition-transform duration-300">
+                  <img
+                    src="/selo.png"
+                    alt="Quality Seal"
+                    className="w-28 h-28 object-contain drop-shadow-lg cursor-pointer"
+                    style={{ 
+                      imageRendering: 'crisp-edges'
+                    }}
+                  />
+                </a>
               </div>
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -240,7 +281,7 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Us</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-               For nearly three decades, Crosshair Stucco & Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 29 years ago, we specialize in stucco work and repair - and now proudly offer protective home coatings to provide your home with an extra layer of safety and durability. Our mission is simple: to keep your home safe, beautiful, and protected from damage.
+               For nearly three decades, Crosshair Stucco and Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 27 years ago, we built our reputation specializing in stucco and repair. Today, as we expand our expertise to better serve homeowners, we've evolved into Crosshair Solutions. Along with stucco, we now proudly offer protective home coatings and a broader range of services designed to keep your home safe, beautiful, and durable. Our mission remains the same: protecting and enhancing your home for years to come.
               </p>
               <Button
                 size="lg"
@@ -249,6 +290,62 @@ export default function HomePage() {
               >
                 Request a Free Quote
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Work Section */}
+      <section id="work" className="py-16 bg-black">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Work</h2>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <div className="relative px-12 md:px-20">
+              {/* Carrossel de Imagens - 3 imagens do mesmo tamanho */}
+              <div className="flex items-center justify-center gap-4 md:gap-6">
+                {/* Mostra 3 imagens com o mesmo tamanho */}
+                {[-1, 0, 1].map((offset) => {
+                  const index = (currentImageIndex + offset + workImages.length) % workImages.length;
+                  
+                  return (
+                    <div
+                      key={offset}
+                      className="flex-1"
+                    >
+                      <div className="aspect-[3/4] bg-gray-900 rounded-lg overflow-hidden">
+                        <img
+                          src={workImages[index].src}
+                          alt={workImages[index].alt}
+                          className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                          onClick={() => setCurrentImageIndex(index)}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* Botões de Navegação */}
+              <button
+                onClick={prevImage}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-orange-500 hover:text-orange-400 transition-colors"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-10 h-10 md:w-12 md:h-12" strokeWidth={3} />
+              </button>
+              
+              <button
+                onClick={nextImage}
+                className="absolute right-0 top-1/2 -translate-y-1/2 text-orange-500 hover:text-orange-400 transition-colors"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-10 h-10 md:w-12 md:h-12" strokeWidth={3} />
+              </button>
+
+              {/* Indicadores de posição removidos para ficar igual ao print */}
             </div>
           </div>
         </div>
@@ -455,6 +552,9 @@ export default function HomePage() {
                 </a>
                 <a href="#services" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
                   SERVICES
+                </a>
+                <a href="#work" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
+                  OUR WORK
                 </a>
                 <a href="#about" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
                   ABOUT
