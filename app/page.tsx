@@ -13,28 +13,32 @@ export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Array de imagens para o carrossel
-  const workImages = [
-    { src: '/work1.png', alt: 'Project 1' },
-    { src: '/work2.png', alt: 'Project 2' },
-    { src: '/work3.png', alt: 'Project 3' },
-    { src: '/work4.png', alt: 'Project 4' },
-    { src: '/work5.png', alt: 'Project 5' },
-    { src: '/work6.png', alt: 'Project 6' },
-    { src: '/work7.png', alt: 'Project 7' },
-    { src: '/work8.png', alt: 'Project 8' },
-    { src: '/work9.png', alt: 'Project 9' },
-    { src: '/work10.png', alt: 'Project 10' },
-    { src: '/work11.png', alt: 'Project 11' },
-    { src: '/work12.png', alt: 'Project 12' },
+  // Array de imagens do portfólio
+  const portfolioImages = [
+    '/work1.png',
+    '/work2.png',
+    '/work3.png',
+    '/work4.png',
+    '/work5.png',
+    '/work6.png',
+    '/work7.png',
+    '/work8.png',
+    '/work9.png',
+    '/work10.png',
+    '/work11.png',
+    '/work12.png',
   ]
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % workImages.length)
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === portfolioImages.length - 1 ? 0 : prevIndex + 1
+    )
   }
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + workImages.length) % workImages.length)
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? portfolioImages.length - 1 : prevIndex - 1
+    )
   }
 
   const sendEmail = async (e: React.FormEvent) => {
@@ -89,7 +93,7 @@ export default function HomePage() {
             <a href="#about" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
               About
             </a>
-             <a href="#work" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
+            <a href="#work" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
               Our Work
             </a>
             <a href="#reviews" className="text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide">
@@ -130,18 +134,18 @@ export default function HomePage() {
                 Services
               </a>
               <a 
-                href="#work" 
-                className="block text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Our Work
-              </a>
-              <a 
                 href="#about" 
                 className="block text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
+              </a>
+              <a 
+                href="#work" 
+                className="block text-white hover:text-orange-400 transition-colors font-normal text-base tracking-wide py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Our Work
               </a>
               <a 
                 href="#reviews" 
@@ -176,14 +180,12 @@ export default function HomePage() {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Protect your home from <span className="text-orange-500">woodpeckers</span>.
-          </h1>
-          <h1 className="text-3xl md:text-6xl font-bold text-white mb-4">
-            Guaranteed.
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Protect your home from <span className="text-orange-500">woodpeckers</span>.</h1>
+           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+           Guaranteed.
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 text-pretty">
-            Home Coating you can trust.
+          Home Coating you can trust.
           </p>
           <Button
             size="lg"
@@ -216,25 +218,28 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <Card className="text-center p-6 border-2 border-orange-200 hover:border-orange-300 transition-colors relative">
               {/* Selo no canto superior direito */}
-              <div className="absolute -top-4 -right-4 z-10">
-                <a href="https://www.biobond.com" target="_blank" rel="noopener noreferrer" className="block hover:scale-110 transition-transform duration-300">
-                  <img
-                    src="/selo.png"
-                    alt="Quality Seal"
-                    className="w-28 h-28 object-contain drop-shadow-lg cursor-pointer"
-                    style={{ 
-                      imageRendering: 'crisp-edges'
-                    }}
-                  />
-                </a>
-              </div>
+              <a 
+                href="https://biobond.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="absolute -top-4 -right-4 z-10 hover:scale-110 transition-transform duration-300"
+              >
+                <img
+                  src="/selo.png"
+                  alt="Quality Seal"
+                  className="w-28 h-28 object-contain drop-shadow-lg cursor-pointer"
+                  style={{ 
+                    imageRendering: 'crisp-edges'
+                  }}
+                />
+              </a>
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-orange-500" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Home Coating</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Protect your home from weather with advanced coating. Long-term protection. Ideal for stucco, walls, wood, doors, and more.
+                  Protect your home from weather and woodpeckers with advanced coating. Long-term protection. Ideal for stucco, walls, wood, doors, and more.
                 </p>
               </CardContent>
             </Card>
@@ -258,7 +263,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Exterior Maintenance</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Complete maintenance to keep your home looking like new. Restore your home's exterior with high-quality power washing, concrete, slabs and docks.
+                  Complete maintenance to keep your home looking like new. Restore your home's exterior with high-quality power washing, concrete repair, slab work, and dock services.
                 </p>
               </CardContent>
             </Card>
@@ -281,7 +286,7 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Us</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-               For nearly three decades, Crosshair Stucco and Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 27 years ago, we built our reputation specializing in stucco and repair. Today, as we expand our expertise to better serve homeowners, we've evolved into Crosshair Solutions. Along with stucco, we now proudly offer protective home coatings and a broader range of services designed to keep your home safe, beautiful, and durable. Our mission remains the same: protecting and enhancing your home for years to come.
+               For nearly three decades, Crosshair Stucco and Repair has been a trusted name in the Lake of the Ozarks area. Founded by Troy Wiethop 27 years ago, we built our reputation specializing in stucco and repair. Today, as we expand our expertise to better serve homeowners, we’ve evolved into Crosshair Solutions. Along with stucco, we now proudly offer protective home coatings and a broader range of services designed to keep your home safe, beautiful, and durable. Our mission remains the same: protecting and enhancing your home for years to come.
               </p>
               <Button
                 size="lg"
@@ -294,8 +299,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Our Work Section */}
+      
+            {/* Our Work Section */}
       <section id="work" className="py-16 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -303,54 +308,103 @@ export default function HomePage() {
           </div>
 
           <div className="max-w-7xl mx-auto">
-            <div className="relative px-12 md:px-20">
-              {/* Carrossel de Imagens - 3 imagens do mesmo tamanho */}
-              <div className="flex items-center justify-center gap-4 md:gap-6">
-                {/* Mostra 3 imagens com o mesmo tamanho */}
-                {[-1, 0, 1].map((offset) => {
-                  const index = (currentImageIndex + offset + workImages.length) % workImages.length;
-                  
-                  return (
-                    <div
-                      key={offset}
-                      className="flex-1"
-                    >
-                      <div className="aspect-[3/4] bg-gray-900 rounded-lg overflow-hidden">
-                        <img
-                          src={workImages[index].src}
-                          alt={workImages[index].alt}
-                          className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-                          onClick={() => setCurrentImageIndex(index)}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
+            {/* Desktop view - 3 imagens */}
+            <div className="hidden md:block relative px-20">
+              {/* Container das 3 imagens */}
+              <div className="grid grid-cols-3 gap-4">
+                {/* Imagem anterior */}
+                <div className="w-full">
+                  <img
+                    src={portfolioImages[currentImageIndex === 0 ? portfolioImages.length - 1 : currentImageIndex - 1]}
+                    alt={`Project ${currentImageIndex === 0 ? portfolioImages.length : currentImageIndex}`}
+                    className="w-full h-[440px] object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Imagem atual (central) */}
+                <div className="w-full">
+                  <img
+                    src={portfolioImages[currentImageIndex]}
+                    alt={`Project ${currentImageIndex + 1}`}
+                    className="w-full h-[440px] object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Próxima imagem */}
+                <div className="w-full">
+                  <img
+                    src={portfolioImages[currentImageIndex === portfolioImages.length - 1 ? 0 : currentImageIndex + 1]}
+                    alt={`Project ${currentImageIndex === portfolioImages.length - 1 ? 1 : currentImageIndex + 2}`}
+                    className="w-full h-[440px] object-cover rounded-lg"
+                  />
+                </div>
               </div>
-              
-              {/* Bot�es de Navega��o */}
+
+              {/* Botões de Navegação Desktop */}
               <button
                 onClick={prevImage}
-                className="absolute left-0 top-1/2 -translate-y-1/2 text-orange-500 hover:text-orange-400 transition-colors"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110 z-10"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-10 h-10 md:w-12 md:h-12" strokeWidth={3} />
-              </button>
-              
-              <button
-                onClick={nextImage}
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-orange-500 hover:text-orange-400 transition-colors"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-10 h-10 md:w-12 md:h-12" strokeWidth={3} />
+                <ChevronLeft className="w-8 h-8" />
               </button>
 
-              {/* Indicadores de posi��o removidos para ficar igual ao print */}
+              <button
+                onClick={nextImage}
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Mobile view - 1 imagem */}
+            <div className="md:hidden relative px-12">
+              <div className="w-full">
+                <img
+                  src={portfolioImages[currentImageIndex]}
+                  alt={`Project ${currentImageIndex + 1}`}
+                  className="w-full h-[300px] object-cover rounded-lg"
+                />
+              </div>
+
+              {/* Botões de Navegação Mobile */}
+              <button
+                onClick={prevImage}
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={nextImage}
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+
+              {/* Indicadores de imagem */}
+              <div className="flex justify-center gap-2 mt-4">
+                {portfolioImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentImageIndex 
+                        ? 'bg-orange-500 w-8' 
+                        : 'bg-gray-400'
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
-
+     
       {/* What Our Customers Say Section */}
       <section id="reviews" className="py-16 bg-white">
         <div className="container mx-auto px-6">
@@ -358,11 +412,11 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
+          <div className="flex justify-center max-w-4xl mx-auto">
+            <div className="text-center max-w-2xl">
               <div className="mb-6">
                 <img
-                  src="/man-smiling.jpg"
+                  src="/homeowner-smiling.jpg"
                   alt="John M."
                   className="w-28 h-28 rounded-full mx-auto object-cover object-center"
                 />
@@ -373,13 +427,13 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-4 italic leading-relaxed">
-                &quot;Crosshair Solutions exceeded my expectations! The repairs were completed seamlessly, and my property looks better than ever&quot;
+                &quot;We want to thank Crosshair Solutions for coming to our home and doing a great job. They applied their new product Bio Bond on our house. We couldn't be happier with the results. Not only does it protect the exterior of the house it also keeps spiders away and woodpeckers off of the house for 3 to 5 years. If you don't want spiders, mud dobbers and insects on your house Call CrossHair Solutions.&quot;
               </p>
-              <p className="font-semibold text-gray-900">John M.</p>
+              <p className="font-semibold text-gray-900">Alison Renée.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
             </div>
 
-            <div className="text-center">
+            {/* <div className="text-center">
               <div className="mb-6">
                 <img
                   src="/woman-smiling.jpg"
@@ -397,7 +451,7 @@ export default function HomePage() {
               </p>
               <p className="font-semibold text-gray-900">Sarah K.</p>
               <p className="text-gray-500 text-sm">Homeowner</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -484,7 +538,7 @@ export default function HomePage() {
                 
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Address:</p>
-                  <p className="text-gray-900 font-medium">288 Destiny Ridge, Roach Missouri, 65787</p>
+                  <p className="text-gray-900 font-medium">288 Destiny Ridge, Roach, Missouri 65787</p>
                   <p className="text-gray-900 font-medium">United States</p>
                 </div>
               </div>
@@ -553,11 +607,11 @@ export default function HomePage() {
                 <a href="#services" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
                   SERVICES
                 </a>
-                <a href="#work" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
-                  OUR WORK
-                </a>
                 <a href="#about" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
                   ABOUT
+                </a>
+                <a href="#work" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
+                  OUR WORK
                 </a>
                 <a href="#reviews" className="block text-gray-400 hover:text-orange-400 transition-colors text-sm uppercase tracking-wider">
                   REVIEWS
