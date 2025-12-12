@@ -1,34 +1,53 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import Script from 'next/script'
+import { GA_TRACKING_ID } from '../lib/gtag'
+import './globals.css'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Crosshair Solutions - Home Coating & Stucco Repair",
-  description: "Professional home coating and stucco repair services in Lake of the Ozarks area. Protect your home with our advanced coating solutions and expert repair services.",
-};
+  title: 'Crosshair - Professional Home Services',
+  description: 'Professional pressure washing, house cleaning, and home maintenance services you can trust.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/* Google Analytics */}
+        {GA_TRACKING_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <Script
+              id="gtag-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_TRACKING_ID}', {
+                    page_path: window.location.pathname,
+                    debug_mode: true
+                  });
+                  console.log('Google Analytics inicializado com ID:', '${GA_TRACKING_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
+      </head>
+      <body className={inter.className} suppressHydrationWarning={true}>
         {children}
       </body>
     </html>
-  );
+  )
 }
